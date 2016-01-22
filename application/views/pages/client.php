@@ -3,12 +3,12 @@
     <br/>
 <table style="width:100%; border-bottom:thin solid #ECECEC; padding:10px;">
     <tr>
-        <td><a href="<?php echo base_url() ?>index.php/createpdf/cases/<?php echo $c["c_id"] ?>" target="_blank">Print list</a></td>
+        <td><a href="<?php echo base_url() ?>index.php/createpdf/cases/<?php if($c != null){ echo $c["c_id"]; }  ?>" target="_blank">Print list</a></td>
     </tr>
 </table>
 
-<p><?php echo $c["c_name"] ?> - <?php echo $c["c_company"] ?></p>  
-    <?php foreach ($client as $client): ?>
+<p><?php if($c != null){ echo $c["c_name"];   ?> - <?php echo $c["c_company"]; }?></p>
+    <?php if($client != null){ foreach ($client as $client): ?>
    
         <div class="categories">
              <a href="<?php echo base_url() ?>index.php/cases/<?php echo $client['c_s_id'] ?>/<?php echo $c['c_id'] ?>">
@@ -68,7 +68,7 @@ elseif($client['c_s_status'] ==0){
                 </tr>
              </table> </a>
                  </div>
-    <?php endforeach ?>
+    <?php endforeach ;}?>
      </div>
  <div class="other" style="width:35%">
    
@@ -92,7 +92,7 @@ elseif($client['c_s_status'] ==0){
     <tr>
         <td><p>File Number</p></td>
            <td> <input type="input" required name="file" class="input" /></td>
-        <td> <input type="hidden" readonly name="c_id" value="<?php echo $c["c_id"] ?>" class="input" /></td>
+        <td> <input type="hidden" readonly name="c_id" value="<?php if($c != null){echo $c["c_id"];} ?>" class="input" /></td>
       </tr>
     
     <tr>

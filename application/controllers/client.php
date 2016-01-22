@@ -22,9 +22,9 @@ class Client extends CI_Controller {
 
            $data['client'] = $this->news_model->get_cases($slug);
            $data['c'] = $this->news_model->get_client($slug);
-             $this->load->view('templates/header', $data);
-            $this->load->view('pages/client', $session_data, $data);
-             $this->load->view('templates/footer');
+           $this->load->view('templates/header', $data);
+           $this->load->view('pages/client', $session_data, $data);
+            $this->load->view('templates/footer');
                
         }
         else
