@@ -12,7 +12,7 @@ class Model_Lawyer extends CI_Model {
     /*Create New Lawyer into DB*/
     function SaveNewLayer($lawyer_id,$Lawyer_name,$gender,$Lawyer_nrc,$Lawyer_phone_1,$Lawyer_phone_2,$Lawyer_email){
 
-        if(!CheckIfLawyerExist($Lawyer_nrc)){
+        if(!$this->CheckIfLawyerExist($Lawyer_nrc)){
             $data = array(
                 'lawyer_id' =>$lawyer_id,
                 'Lawyer_name' => $Lawyer_name,
@@ -29,7 +29,7 @@ class Model_Lawyer extends CI_Model {
     /*Create New Lawyer into DB*/
     function UpdateExistingLayer($lawyer_id,$Lawyer_name,$gender,$Lawyer_nrc,$Lawyer_phone_1,$Lawyer_phone_2,$Lawyer_email){
 
-        if(CheckIfLawyerExist($Lawyer_nrc)){
+        if($this->CheckIfLawyerExist($Lawyer_nrc)){
             $data = array(
                 'lawyer_id' =>$lawyer_id,
                 'Lawyer_name' => $Lawyer_name,
@@ -44,18 +44,14 @@ class Model_Lawyer extends CI_Model {
         }
     }
 
-
-
     //Delete Lawyer from DB
     public function deleteLawyerFromSystem($Lawyer_nrc)
     {
-      if(CheckIfLawyerExist($Lawyer_nrc)){
+      if($this->CheckIfLawyerExist($Lawyer_nrc)){
           $this->db->delete('lawyer_tbl', array('Lawyer_nrc' => $Lawyer_nrc));
       }
     }
-
-
-
+    
     //check using NRC if lawyer exist
     function CheckIfLawyerExist($Lawyer_nrc){
         $this -> db -> select('*');
