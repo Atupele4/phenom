@@ -51,7 +51,7 @@ class Model_Lawyer extends CI_Model {
           $this->db->delete('lawyer_tbl', array('Lawyer_nrc' => $Lawyer_nrc));
       }
     }
-    
+
     //check using NRC if lawyer exist
     function CheckIfLawyerExist($Lawyer_nrc){
         $this -> db -> select('*');
