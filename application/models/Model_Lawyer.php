@@ -71,4 +71,29 @@ class Model_Lawyer extends CI_Model {
         }
     }
 
+
+    //Assigning case to lawyer,
+    //method accepts lawyer system id and case id
+    function AssignLawyerToCase($lawyerId,$caseId){
+        if(!$this->CheckIfLawyerExist($lawyerId)){
+            $data = array(
+                'lawyer_sys_id' =>$lawyerId,
+                'case_sys_id' => $caseId
+            );
+            return $this->db->insert('case_lawyer_tbl', $data);
+        }
+    }
+
+    function DeleteLawyerAssignedCase($lawyerId,$case_sys_id){
+        if($this->CheckIfLawyerExist($lawyerId)){
+            $this->db->delete('case_lawyer_tbl', array('lawyer_id' => $lawyerId,'case_sys_id' => $case_sys_id));
+        }
+    }
+
+    function DeleteAllAssignedCaseToLawyer($lawyerId){
+        if($this->CheckIfLawyerExist($lawyerId)){
+            $this->db->delete('case_lawyer_tbl', array('lawyer_id' => $lawyerId));
+        }
+    }
+
 } 
